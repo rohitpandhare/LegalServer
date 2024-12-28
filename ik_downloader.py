@@ -62,19 +62,6 @@ def get_arg_parser():
     parser.add_argument("-p", "--pages", type=int, default=1, help="Number of pages to fetch")
     return parser
 
-def fetch_document_by_id(doc_id):
-    base_url = f"https://api.indiankanoon.org/doc/{doc_id}/"
-    headers = {"Authorization": f"Token {API_TOKEN}"}
-
-    try:
-        response = requests.get(base_url, headers=headers)
-        if response.status_code == 200:
-            return response.json()
-        else:
-            print(f"Error: {response.status_code}, {response.text}")
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
-
 if __name__ == "__main__":
     args = get_arg_parser().parse_args()
     save_search_results(args.query, args.pages)
