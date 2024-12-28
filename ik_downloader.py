@@ -65,13 +65,15 @@ def get_arg_parser():
 def fetch_document_by_id(doc_id):
     base_url = f"https://api.indiankanoon.org/doc/{doc_id}/"
     headers = {"Authorization": f"Token {API_TOKEN}"}
-    response = requests.get(base_url, headers=headers)
 
-    if response.status_code == 200:
-        return response.json()
-    else:
-        logger.error(f"Error fetching document: {response.status_code}, {response.text}")
-        response.raise_for_status()
+    try:
+        response = requests.get(base_url, headers=headers)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            print(f"Error: {response.status_code}, {response.text}")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
 
 if __name__ == "__main__":
     args = get_arg_parser().parse_args()
