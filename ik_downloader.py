@@ -10,7 +10,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("ikapi")
 
 # API_TOKEN = "bed715004ad281dcd8ee04ba23a242a7289ab924"  # Replace with your actual API token
-API_TOKEN = os.getenv("API_KEY")  # Securely fetch API key from environment
+API_TOKEN = os.getenv("API_KEY")  # Fetch the API key from the environment
+
 if not API_TOKEN:
     raise ValueError("API Key not found! Make sure to set the API_KEY environment variable.")
 
