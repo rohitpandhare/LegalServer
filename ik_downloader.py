@@ -9,7 +9,6 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("ikapi")
 
-# API_TOKEN = "63ec6326ae3d158b05d38d232f2a063e1cc79bcb"
 API_TOKEN = os.getenv("API_KEY")  # Fetch the API key from the environment
 
 if not API_TOKEN:
