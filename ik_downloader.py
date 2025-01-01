@@ -9,11 +9,11 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("ikapi")
 
-API_TOKEN = "d9f0c843798e78afbc6bafca27e473e375274ea7"
-# API_TOKEN = os.getenv("API_KEY")  # Fetch the API key from the environment
+# API_TOKEN = "d9f0c843798e78afbc6bafca27e473e375274ea7"
+API_TOKEN = os.getenv("API_KEY")  # Fetch the API key from the environment
 
-# if not API_TOKEN:
-#     raise ValueError("API Key not found! Make sure to set the API_KEY environment variable.")
+if not API_TOKEN:
+    raise ValueError("API Key not found! Make sure to set the API_KEY environment variable.")
 
 def search_documents(query, page_num=0):
     base_url = "https://api.indiankanoon.org/search/"
